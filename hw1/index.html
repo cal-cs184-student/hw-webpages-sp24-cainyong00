@@ -52,8 +52,39 @@
   </table>
 </div>
 
-<h3 align="middle">Part 2: Antialiasing triangles</h3>
-<!-- Future content will go here -->
+<h3 align="middle">Part 2: Antialiasing by Supersampling</h3>
+<p>Antialiasing through supersampling is a technique aimed at reducing the visual artifacts at the edges of rendered shapes, notably triangles, to achieve smoother visual outputs. By sampling multiple points within each pixel and averaging their colors, we mitigate the jagged edges commonly observed in rasterized images, resulting in a more visually appealing image. The core of this approach lies in the implementation of a supersampling algorithm alongside the necessary data structures to support high-resolution sampling.</p>
+
+<p>In adapting the rasterization pipeline for supersampling, we introduced a supersampled buffer, effectively rasterizing scenes at a higher resolution. Each pixel's final color is then determined by averaging the colors of the supersamples within it. This process was particularly crucial for triangles, where the edges are most susceptible to aliasing effects. Modifications to the rasterization pipeline included:</p>
+
+<ul>
+  <li>Expanding the <code>sample_buffer</code> to hold a higher number of samples.</li>
+  <li>Adjusting the <code>rasterize_triangle</code> function to account for supersampling, thus ensuring that each triangle is rasterized at the finer resolution dictated by the supersampling rate.</li>
+  <li>Implementing a <code>resolve_to_framebuffer</code> function that averages supersample colors to determine each pixel's final color.</li>
+</ul>
+
+<p>Supersampling is useful for its ability to provide a higher-quality rendering of vector graphics, especially evident in the rendering of triangles where edges can otherwise appear jagged due to the aliasing effect. This method significantly improves image quality by providing a more accurate representation of edges and fine details.</p>
+
+<div align="middle">
+  <table style="width:100%">
+    <tr>
+      <th>Sample Rate 1</th>
+      <th>Sample Rate 4</th>
+      <th>Sample Rate 16</th>
+    </tr>
+    <tr>
+      <td><img src="t2-sample1.png" align="middle" width="300px"/>
+          <figcaption align="middle">Sample Rate 1</figcaption></td>
+      <td><img src="t2-sample4.png" align="middle" width="300px"/>
+          <figcaption align="middle">Sample Rate 4</figcaption></td>
+      <td><img src="t2-sample16.png" align="middle" width="300px"/>
+          <figcaption align="middle">Sample Rate 16</figcaption></td>
+    </tr>
+  </table>
+</div>
+
+<p>As observed in the screenshots above, increasing the sample rate from 1 to 16 progressively smooths out the edges of the triangles, significantly reducing the aliasing effect. At a sample rate of 1, the edges are quite jagged, while at 16, they are markedly smoother, demonstrating the effectiveness of supersampling in antialiasing. This smoothing effect is due to the averaging process, which blends the color of edge pixels with their background, creating a gradient that visually softens the edge. Such results underscore the importance of supersampling in rendering high-quality vector graphics.</p>
+
 
 <h3 align="middle">Part 3: Transforms</h3>
 <!-- Future content will go here -->
