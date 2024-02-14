@@ -20,7 +20,6 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
 </head>
 
-
 <body>
 
 <h1 align="middle">CS 184/284A: Computer Graphics and Imaging, Spring 2024</h1>
@@ -32,65 +31,57 @@
 <div>
 
 <h2 align="middle">Overview</h2>
-<p>Give a high-level overview of what you implemented in this homework Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.</p>
+<p>In this homework, I implemented a simple rasterizer capable of rendering 2D vector graphics. The project covered several key graphics programming concepts, including drawing single-color triangles, implementing antialiasing through supersampling, applying transformations, and texture mapping with antialiasing. I particularly found the challenge of optimizing the triangle rasterization process enlightening, as it required a deep understanding of spatial relationships and efficient iteration through pixel data.</p>
 
 <h2 align="middle">Section I: Rasterization</h2>
 
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
 
-<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
+<p>To rasterize triangles, I employed an algorithm that iterates over each pixel within the triangle's bounding box to determine if the pixel's center lies within the triangle. This process involves calculating the barycentric coordinates for the pixel's center relative to the triangle's vertices. A pixel is colored if its center is determined to be inside the triangle, based on the condition that all barycentric coordinates are positive and sum to less than one.</p>
+
+<p>The algorithm efficiently narrows down the number of pixels to be checked by first calculating the triangle's axis-aligned bounding box. This ensures that only pixels that could potentially lie within the triangle are considered. The barycentric coordinate method allows for an elegant determination of a point's inclusion within the triangle, accommodating the case where points lie exactly on one of the triangle's edges.</p>
 
 <div align="middle">
-  <table style="width=100%">
+  <table style="width:100%">
     <tr>
       <td>
         <img src="images/image1.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
+        <figcaption align="middle">Basic rasterization of a single-color triangle.</figcaption>
       </td>
       <td>
         <img src="images/image2.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
+        <figcaption align="middle">Rasterization showing pixel inspection.</figcaption>
       </td>
     </tr>
     <br>
     <tr>
       <td>
         <img src="images/image3.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
+        <figcaption align="middle">Another example of triangle rasterization.</figcaption>
       </td>
       <td>
         <img src="images/image4.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
+        <figcaption align="middle">Close-up view demonstrating accurate edge handling.</figcaption>
       </td>
     </tr>
   </table>
 </div>
 
-
 <h3 align="middle">Part 2: Antialiasing triangles</h3>
-
-
+<!-- Future content will go here -->
 
 <h3 align="middle">Part 3: Transforms</h3>
-
-
+<!-- Future content will go here -->
 
 <h2 align="middle">Section II: Sampling</h2>
 
 <h3 align="middle">Part 4: Barycentric coordinates</h3>
-
+<!-- Future content will go here -->
 
 <h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
-
+<!-- Future content will go here -->
 
 <h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
+<!-- Future content will go here -->
 
-
-
-<h2 align="middle">Section III: Art Competition</h2>
-<p>If you are not participating in the optional art competition, don't worry about this section!</p>
-
-<h3 align="middle">Part 7: Draw something interesting!</h3>
-
-</body>
-</html>
+<h2 align
