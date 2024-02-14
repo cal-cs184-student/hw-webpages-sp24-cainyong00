@@ -101,8 +101,29 @@
 </div>
 <h2 align="middle">Section II: Sampling</h2>
 
-<h3 align="middle">Part 4: Barycentric coordinates</h3>
-<!-- Future content will go here -->
+<h3 align="middle">Part 4: Barycentric Coordinates</h3>
+<p>Barycentric coordinates provide a method for expressing the position of a point within a triangle as a weighted average of the triangle's vertices. This system is particularly useful in graphics for interpolating values across the surface of a triangle. Each vertex of the triangle is assigned a barycentric coordinate, with the sum of the coordinates equaling one. A point inside the triangle can then be described by how much it 'leans' towards each vertex, allowing for smooth color gradients and texture mapping.</p>
+
+<p>When rasterizing a triangle with vertex colors, we calculate the barycentric coordinates for each pixel within the triangle. The pixel's color is then a mix of the vertex colors, weighted by these coordinates. This results in a gradient where the color smoothly changes from one vertex color to another, filling the triangle with a blend of colors. This technique is visible in the test7.svg, which displays a single triangle with vertices in red, green, and blue.</p>
+
+<div align="middle">
+  <table style="width:100%">
+    <tr>
+      <th>Barycentric Color Interpolation</th>
+    </tr>
+    <tr>
+      <td><img src="111111.png" align="middle" width="300px"/>
+          <figcaption align="middle">Smooth color gradient in a triangle using barycentric coordinates. Sample Rate 1.</figcaption></td>
+      <td><img src="t4.png" align="middle" width="300px"/>
+          <figcaption align="middle">a colorwheel composed of radially fanning acute isosceles triangles</figcaption></td>
+    </tr>
+  </table>
+</div>
+
+<p>The image above showcases a triangle where the vertices are defined with primary colors: red, green, and blue. Using barycentric coordinates, we interpolate these colors across the triangle's area, resulting in a smooth transition and a rich blend of colors towards the center. This technique demonstrates the power of barycentric coordinates in rendering complex color patterns with simple geometric shapes.</p>
+
+<!-- Rest of the content -->
+
 
 <h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
 <!-- Future content will go here -->
