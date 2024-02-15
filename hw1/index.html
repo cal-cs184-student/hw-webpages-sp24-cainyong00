@@ -31,8 +31,8 @@
 <div>
 
 <h2 align="middle">Overview</h2>
-<p>In this homework, I implemented a simple rasterizer capable of rendering 2D vector graphics. The project covered several key graphics programming concepts, including drawing single-color triangles, implementing antialiasing through supersampling, applying transformations, and texture mapping with antialiasing. I particularly found the challenge of optimizing the triangle rasterization process enlightening, as it required a deep understanding of spatial relationships and efficient iteration through pixel data.</p>
-
+<p>This project involved implementing a rasterizer from scratch, focusing on rendering 2D vector graphics through various rasterization techniques. Starting with the basics, I developed an algorithm for rasterizing single-color triangles, ensuring each pixel within a triangle's bounding box was accurately determined to be inside or outside the triangle using barycentric coordinates. To enhance the visual quality, I incorporated antialiasing through supersampling, allowing for smoother edges and an overall improvement in image fidelity. Transformations were applied to manipulate graphic elements dynamically, adding a layer of interactivity and complexity to the rasterization process.</p>
+  <p>Moving towards more advanced texturing techniques, I implemented pixel sampling for texture mapping, exploring both nearest and bilinear sampling methods to apply textures with varying levels of smoothness. This foundation allowed me to tackle level sampling with mipmaps, optimizing texture mapping by selecting appropriate texture detail levels based on the viewer's distance. The combination of these techniques—ranging from basic triangle rasterization to sophisticated texture mapping—showcases the power of rasterization in computer graphics, offering insights into the trade-offs between rendering speed, memory usage, and visual quality.</p>
 <h2 align="middle">Section I: Rasterization</h2>
 
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
