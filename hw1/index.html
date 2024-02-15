@@ -140,7 +140,25 @@
 
 
 
-<h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
-<!-- Future content will go here -->
+<h2>Task 6: Level Sampling for Texture Mapping</h2>
+
+<p>Level sampling is a sophisticated method in texture mapping that chooses the appropriate level of detail from a series of precomputed textures, known as mipmaps, based on the viewer's distance from the texture. This approach allows for more efficient rendering and reduces aliasing artifacts. To implement level sampling in our rasterizer, we updated the <code>rasterize_textured_triangle</code> function to select mipmaps dynamically based on the calculated level from the <code>Texture::get_level</code> function. We used the <code>SampleParams</code> struct to pass detailed sampling parameters, including UV coordinates and their differentials, to determine the most suitable mipmap level for texture lookup.</p>
+
+<p>Choosing between pixel sampling methods (nearest and bilinear) and level sampling methods (zero, nearest, and linear) involves tradeoffs in rendering speed, memory usage, and the quality of antialiasing. Nearest sampling is fast and uses less memory but can result in pixelated images, especially at lower resolutions. Bilinear sampling provides smoother transitions at the cost of additional computations. Level sampling, particularly linear interpolation between levels, offers superior antialiasing by blending textures from adjacent mipmaps but requires more memory to store the mipmaps and additional computation to select the appropriate levels.</p>
+
+<p>The following images illustrate the impact of different sampling methods on texture mapping. Observe how each method affects the visual quality and potential use cases for optimizing rendering performance versus image quality.</p>
+
+<div align="center">
+    <table>
+        <tr>
+            <td><img src="L_ZERO_P_NEAREST.png" alt="L_ZERO and P_NEAREST"/><br>L_ZERO and P_NEAREST</td>
+            <td><img src="L_ZERO_P_LINEAR.png" alt="L_ZERO and P_LINEAR"/><br>L_ZERO and P_LINEAR</td>
+            <td><img src="L_NEAREST_P_NEAREST.png" alt="L_NEAREST and P_NEAREST"/><br>L_NEAREST and P_NEAREST</td>
+            <td><img src="L_NEAREST_P_LINEAR.png" alt="L_NEAREST and P_LINEAR"/><br>L_NEAREST and P_LINEAR</td>
+        </tr>
+    </table>
+</div>
+
+<p>For custom texture mapping visualization, I chose an image that demonstrates the nuances between these sampling techniques, especially when zooming in or out.</p>
 
 <h2 align
