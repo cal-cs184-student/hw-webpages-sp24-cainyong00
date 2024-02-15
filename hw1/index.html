@@ -117,8 +117,22 @@
 <!-- Rest of the content -->
 
 
-<h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
-<!-- Future content will go here -->
+<h3 align="middle">Task 5: Pixel Sampling for Texture Mapping</h3>
+<p>In Task 5, I implemented pixel sampling techniques to enhance texture mapping on 2D vector graphics rendered by our rasterizer. Pixel sampling is crucial for determining how textures are applied to surfaces, influencing the final visual quality. The core of this task was to implement two pixel sampling methods: nearest and bilinear sampling.</p>
+
+<p>Nearest sampling selects the closest texel to the pixel being textured, which is straightforward but can lead to a pixelated look, especially when textures are stretched. Bilinear sampling, on the other hand, considers the four closest texels to the texture coordinate and performs a linear interpolation among them, resulting in smoother transitions and more natural-looking textures. These methods were implemented in the <code>Texture::sample_nearest</code> and <code>Texture::sample_bilinear</code> functions, respectively. Within the <code>RasterizerImp::rasterize_textured_triangle</code> function, based on the <code>psm</code> mode, the appropriate sampling method is used to fetch texel colors and apply them to the triangle's pixels. This approach allows for dynamic switching between sampling methods, offering a balance between performance and visual fidelity. When compared, bilinear sampling clearly outperforms nearest sampling by reducing the pixelation effect and providing smoother texture mapping, especially noticeable in SVG files within the <code>svg/texmap/</code> directory.</p>
+
+<p>To illustrate the differences between these sampling methods, I examined various SVG files, focusing on areas where bilinear sampling significantly improves over nearest sampling. The comparison included screenshots with both sampling methods at 1 and 16 samples per pixel, demonstrating bilinear sampling's superiority in delivering smoother and more visually appealing textures. This task not only enhanced the rasterizer's capability to render textured graphics with higher quality but also provided insights into the trade-offs between different sampling strategies.</p>
+<p>In practice, the most significant contrasts between the two methods become apparent when the texture space is zoomed in on the screen space, leading to a small L metric at the sample point. This scenario causes the nearest-neighbor method to amplify the texel space's pixelation into the screen space, as it maps a single texel to several pixels during magnification.</p>
+<!-- Placeholder for images -->
+<div align="middle">
+  <img src="nearest1.png" alt="Nearest Sampling at 1x" width="200px"/>
+  <img src="nearest16.png" alt="Nearest Sampling at 16x" width="200px"/>
+  <img src="bilinear1.png" alt="Bilinear Sampling at 1x" width="200px"/>
+  <img src="bilinear16.png" alt="Bilinear Sampling at 16x" width="200px"/>
+  <p>Comparative screenshots showcasing the effects of nearest and bilinear sampling at different sample rates.</p>
+</div>
+
 
 <h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
 <!-- Future content will go here -->
