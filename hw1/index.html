@@ -97,7 +97,7 @@
 <h3 align="middle">Part 4: Barycentric Coordinates</h3>
 <p>Barycentric coordinates provide a method for expressing the position of a point within a triangle as a weighted average of the triangle's vertices. This system is particularly useful in graphics for interpolating values across the surface of a triangle. Each vertex of the triangle is assigned a barycentric coordinate, with the sum of the coordinates equaling one. A point inside the triangle can then be described by how much it 'leans' towards each vertex, allowing for smooth color gradients and texture mapping.</p>
 
-<p>When rasterizing a triangle with vertex colors, we calculate the barycentric coordinates for each pixel within the triangle. The pixel's color is then a mix of the vertex colors, weighted by these coordinates. This results in a gradient where the color smoothly changes from one vertex color to another, filling the triangle with a blend of colors. This technique is visible in the test7.svg, which displays a single triangle with vertices in red, green, and blue.</p>
+<p>When rasterizing a triangle with vertex colors, we calculate the barycentric coordinates for each pixel within the triangle. The pixel's color is then a mix of the vertex colors, weighted by these coordinates. This results in a gradient where the color smoothly changes from one vertex color to another, filling the triangle with a blend of colors.</p>
 
 <div align="middle">
   <table style="width:100%">
@@ -146,7 +146,7 @@
 
 <p>Choosing between pixel sampling methods (nearest and bilinear) and level sampling methods (zero, nearest, and linear) involves tradeoffs in rendering speed, memory usage, and the quality of antialiasing. Nearest sampling is fast and uses less memory but can result in pixelated images, especially at lower resolutions. Bilinear sampling provides smoother transitions at the cost of additional computations. Level sampling, particularly linear interpolation between levels, offers superior antialiasing by blending textures from adjacent mipmaps but requires more memory to store the mipmaps and additional computation to select the appropriate levels.</p>
 
-<p>The following images illustrate the impact of different sampling methods on texture mapping. Observe how each method affects the visual quality and potential use cases for optimizing rendering performance versus image quality.</p>
+<p>The following images illustrate the impact of different sampling methods on texture mapping.</p>
 
 <div align="center">
     <table>
@@ -160,6 +160,6 @@
 </div>
 
 
-<p>For custom texture mapping visualization, I chose an image that demonstrates the nuances between these sampling techniques, especially when zooming in or out.</p>
+<p>For custom texture mapping visualization, I chose an image that demonstrates the nuances between these sampling techniques, especially when zooming in.</p>
 
 <h2 align
